@@ -6,7 +6,10 @@ import {
     ROUTE_HOME,
     ROUTE_ARTICLE_LIST,
     ROUTE_ARTICLE_CREATE,
-    ROUTE_ARTICLE_EDIT
+    ROUTE_ARTICLE_EDIT,
+    ROUTE_AUTHOR_LIST,
+    ROUTE_AUTHOR_CREATE,
+    ROUTE_AUTHOR_EDIT,
 } from '../../constants';
 import ArticleList from '../../pages/ArticleList/ArticleList';
 import ArticleCreate from '../../pages/ArticleCreate/ArticleCreate';
@@ -24,6 +27,15 @@ function MainContent() {
                         <ArticleCreate />
                     </Route>
                     <Route path={ ROUTE_ARTICLE_EDIT }>
+                        <ArticleEdit />
+                    </Route>
+                    <Route path={ ROUTE_AUTHOR_LIST }>
+                        <ArticleList />
+                    </Route>
+                    <Route path={ ROUTE_AUTHOR_CREATE }>
+                        <ArticleCreate />
+                    </Route>
+                    <Route path={ ROUTE_AUTHOR_EDIT }>
                         <ArticleEdit />
                     </Route>
                     <Route path={ ROUTE_HOME }>
