@@ -14,6 +14,9 @@ import {
 import ArticleList from '../../pages/ArticleList/ArticleList';
 import ArticleCreate from '../../pages/ArticleCreate/ArticleCreate';
 import ArticleEdit from '../../pages/ArticleEdit/ArticleEdit';
+import AuthorList from '../../pages/AuthorList/AuthorList';
+import AuthorCreate from '../../pages/AuthorCreate/AuthorCreate';
+import AuthorEdit from '../../pages/AuthorEdit/AuthorEdit';
 
 function MainContent() {
     return (
