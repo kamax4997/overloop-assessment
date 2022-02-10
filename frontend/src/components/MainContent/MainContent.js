@@ -33,13 +33,13 @@ function MainContent() {
                         <ArticleEdit />
                     </Route>
                     <Route path={ ROUTE_AUTHOR_LIST }>
-                        <ArticleList />
+                        <AuthorList />
                     </Route>
                     <Route path={ ROUTE_AUTHOR_CREATE }>
-                        <ArticleCreate />
+                        <AuthorCreate />
                     </Route>
                     <Route path={ ROUTE_AUTHOR_EDIT }>
-                        <ArticleEdit />
+                        <AuthorEdit />
                     </Route>
                     <Route path={ ROUTE_HOME }>
                         <Redirect to={ ROUTE_ARTICLE_LIST } />
