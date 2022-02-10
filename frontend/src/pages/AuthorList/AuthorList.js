@@ -1,58 +1,56 @@
-import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import Table from 'react-bootstrap/Table';
 
-import { ROUTE_ARTICLE_LIST } from '../../constants';
-import { createArticle } from '../../services/articles';
-import RegionDropdown from '../../components/RegionDropdown/RegionDropdown';
+import { ROUTE_AUTHOR_PREFIX, ROUTE_AUTHOR_CREATE } from '../../constants';
+import { listAuthors } from '../../services/authors';
 
 function AuthorList() {
-    const history = useHistory();
-    const [title, setTitle] = useState('');
-    const [content, setContent] = useState('');
-    const [regions, setRegions] = useState([]);
+    const [authors, setAuthors] = useState([]);
 
-    const handleSave = async () => {
-        const payload = { title, content, regions };
-        await createArticle(payload);
-        history.push(ROUTE_ARTICLE_LIST);
-    };
+    useEffect(() => {
+        const fetchAuthors = async () => {
+            const data = await listAuthors();
+            setAuthors(data);
+        };
+
+        fetchAuthors();
+    }, []);
+
+    const renderAuthors = () => authors.map((author) => {
+        const { id, firstName, lastName } = author;
+
+        return (
+            <tr key={ id }>
+                <td>
+                    {firstName}
+                </td>
+                <td>
+                    {lastName}
+                </td>
+                <td>
+                    <Link to={ `${ROUTE_AUTHOR_PREFIX}/${id}` }>Edit</Link>
+                </td>
+            </tr>
+        );
+    });
 
     return (
-        <div className="ArticleCreate">
-            <h1>Create Article</h1>
-            <Form>
-                <Form.Group>
-                    <Form.Label>Title</Form.Label>
-                    <Form.Control
-                        type="text"
-                        placeholder="Title"
-                        value={ title }
-                        onChange={ (event) => setTitle(event.target.value) }
-                    />
-                </Form.Group>
-                <Form.Group>
-                    <Form.Label>Content</Form.Label>
-                    <Form.Control
-                        as="textarea"
-                        placeholder="Content"
-                        rows="5"
-                        value={ content }
-                        onChange={ (event) => setContent(event.target.value) }
-                    />
-                </Form.Group>
-                <Form.Group>
-                    <Form.Label>Regions</Form.Label>
-                    <RegionDropdown
-                        value={ regions }
-                        onChange={ (regions) => setRegions(regions) }
-                    />
-                </Form.Group>
-                <Button variant="primary" onClick={ handleSave }>
-                    Save Article
-                </Button>
-            </Form>
+        <div className="AuthorList">
+            <h1>Authors</h1>
+            <Link className="d-block mb-3" to={ ROUTE_AUTHOR_CREATE }>
+                Create a new Author
+            </Link>
+            <Table striped bordered hover>
+                <thead>
+                    <tr>
+                        <th>Authors</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    { renderAuthors() }
+                </tbody>
+            </Table>
         </div>
     );
 }
