@@ -44,7 +44,9 @@ function AuthorList() {
             <Table striped bordered hover>
                 <thead>
                     <tr>
-                        <th>Authors</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>

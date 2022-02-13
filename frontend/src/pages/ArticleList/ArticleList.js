@@ -18,12 +18,15 @@ function ArticleList() {
     }, []);
 
     const renderArticles = () => articles.map((article) => {
-        const { id, title } = article;
+        const { id, title, authorId } = article;
 
         return (
             <tr key={ id }>
                 <td>
                     <Link to={ `${ROUTE_ARTICLE_PREFIX}/${id}` }>{ title }</Link>
+                </td>
+                <td>
+                    { authorId }
                 </td>
             </tr>
         );
@@ -39,6 +42,7 @@ function ArticleList() {
                 <thead>
                     <tr>
                         <th>Title</th>
+                        <th>Author</th>
                     </tr>
                 </thead>
                 <tbody>
