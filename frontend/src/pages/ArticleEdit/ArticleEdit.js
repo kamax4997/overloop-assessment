@@ -14,7 +14,7 @@ function ArticleEdit(props) {
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
     const [regions, setRegions] = useState([]);
-    const [authorId, setAuthorId] = useState(1);
+    const [authorId, setAuthorId] = useState(0);
 
     useEffect(() => {
         const fetchArticle = async () => {
