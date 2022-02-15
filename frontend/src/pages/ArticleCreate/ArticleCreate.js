@@ -63,7 +63,7 @@ function ArticleCreate() {
                         onChange={ (author) => setAuthorId(author.id) }
                     />
                 </Form.Group>
-                <Button variant="primary" onClick={ handleSave }>
+                <Button data-testid="article-save" variant="primary" onClick={ handleSave }>
                     Save Article
                 </Button>
             </Form>
