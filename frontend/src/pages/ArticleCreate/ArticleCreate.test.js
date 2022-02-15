@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, fireEvent, act } from '@testing-library/react';
+import { render, screen, fireEvent, act } from '@testing-library/react';
 import ArticleCreate from './ArticleCreate';
 
 describe("ArticleCreate component", () => {
@@ -10,5 +10,8 @@ describe("ArticleCreate component", () => {
 
     expect(getByTestId("article-title").value).toBe("");
     expect(getByTestId("article-content").value).toBe("");
+
+    expect(screen.getByText(/Regions/i)).toBeTruthy();
+    expect(screen.getByText(/Author/i)).toBeTruthy();
   });
 });
