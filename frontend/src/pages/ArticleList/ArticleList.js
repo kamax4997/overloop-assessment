@@ -18,7 +18,7 @@ function ArticleList() {
     }, []);
 
     const renderArticles = () => articles.map((article) => {
-        const { id, title, authorId } = article;
+        const { id, title, author } = article;
 
         return (
             <tr key={ id }>
@@ -26,7 +26,10 @@ function ArticleList() {
                     <Link to={ `${ROUTE_ARTICLE_PREFIX}/${id}` }>{ title }</Link>
                 </td>
                 <td>
-                    { authorId }
+                    { author?.firstName.concat(' ', author?.lastName) }
+                </td>
+                <td>
+                    <Link to={ `${ROUTE_ARTICLE_PREFIX}/${id}` }>Edit</Link>
                 </td>
             </tr>
         );
@@ -43,6 +46,7 @@ function ArticleList() {
                     <tr>
                         <th>Title</th>
                         <th>Author</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
