@@ -1,4 +1,5 @@
 import { listArticles } from './articles';
+import api from '../utils/api';
 
 const articlesData = [
   {
@@ -25,13 +26,10 @@ const articlesData = [
 
 describe("request all articles", () => {
   it("should return status code 200 and a defined body as response", async () => {
-    jest.spyOn(global, "fetch").mockImplementation(() =>
+    jest.spyOn(api, 'get').mockImplementation(() =>
       Promise.resolve({
-        json: () =>
-          Promise.resolve({
-            status: 200,
-            data: articlesData,
-          }),
+        status: 200,
+        data: articlesData,
       })
     );
     
@@ -40,7 +38,7 @@ describe("request all articles", () => {
   });
 
   it("should catch error", async () => {
-    jest.spyOn(global, "fetch").mockImplementation(() =>
+    jest.spyOn(api, 'get').mockImplementation(() =>
       Promise.resolve({
         json: () =>
           Promise.resolve({
@@ -50,7 +48,6 @@ describe("request all articles", () => {
     );
 
     const result = await listArticles();
-
     expect(result).not.toBeDefined();
   });
 });
