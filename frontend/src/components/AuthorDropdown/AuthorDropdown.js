@@ -29,8 +29,9 @@ function AuthorDropdown({ value, onChange }) {
     }, [value, dropdownValue]);
 
     return (
-        <div className="RegionDropdown">
+        <div className="AuthorDropdown">
             <DropdownList
+                data-testid='author-dropdown'
                 value={dropdownValue}
                 dataKey='id'
                 valueField='id'

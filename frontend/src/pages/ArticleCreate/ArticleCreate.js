@@ -29,6 +29,7 @@ function ArticleCreate() {
                 <Form.Group>
                     <Form.Label>Title</Form.Label>
                     <Form.Control
+                        data-testid="article-title"
                         type="text"
                         placeholder="Title"
                         value={ title }
@@ -38,6 +39,7 @@ function ArticleCreate() {
                 <Form.Group>
                     <Form.Label>Content</Form.Label>
                     <Form.Control
+                        data-testid="article-content"
                         as="textarea"
                         placeholder="Content"
                         rows="5"
@@ -48,6 +50,7 @@ function ArticleCreate() {
                 <Form.Group>
                     <Form.Label>Regions</Form.Label>
                     <RegionDropdown
+                        data-testid="article-regions"
                         value={ regions }
                         onChange={ (regions) => setRegions(regions) }
                     />
@@ -55,6 +58,7 @@ function ArticleCreate() {
                 <Form.Group>
                     <Form.Label>Author</Form.Label>
                     <AuthorDropdown
+                        data-testid="article-author"
                         value={ authorId }
                         onChange={ (author) => setAuthorId(author.id) }
                     />
