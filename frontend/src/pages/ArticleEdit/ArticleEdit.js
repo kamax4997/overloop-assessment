@@ -31,7 +31,6 @@ function ArticleEdit() {
     const handleSave = async () => {
         const articleAuthor = authorId === 0 ? null : authorId;
         const payload = { title, content, regions, authorId: articleAuthor };
-        console.log(payload, "edit");
         await editArticle(articleId, payload);
         history.push(ROUTE_ARTICLE_LIST);
     };

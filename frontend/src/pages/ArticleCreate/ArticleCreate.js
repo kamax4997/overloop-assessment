@@ -18,7 +18,6 @@ function ArticleCreate() {
     const handleSave = async () => {
         const articleAuthor = authorId === 0 ? null : authorId;
         const payload = { title, content, regions, authorId: articleAuthor };
-        console.log(payload, "create");
         await createArticle(payload);
         history.push(ROUTE_ARTICLE_LIST);
     };
