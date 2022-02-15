@@ -13,10 +13,12 @@ function ArticleCreate() {
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
     const [regions, setRegions] = useState([]);
-    const [authorId, setAuthorId] = useState(1);
+    const [authorId, setAuthorId] = useState(0);
 
     const handleSave = async () => {
-        const payload = { title, content, regions, authorId };
+        const articleAuthor = authorId === 0 ? null : authorId;
+        const payload = { title, content, regions, authorId: articleAuthor };
+        console.log(payload, "create");
         await createArticle(payload);
         history.push(ROUTE_ARTICLE_LIST);
     };

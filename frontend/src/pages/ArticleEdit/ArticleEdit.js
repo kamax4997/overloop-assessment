@@ -8,7 +8,7 @@ import { getArticle, editArticle } from '../../services/articles';
 import RegionDropdown from '../../components/RegionDropdown/RegionDropdown';
 import AuthorDropdown from '../../components/AuthorDropdown/AuthorDropdown';
 
-function ArticleEdit(props) {
+function ArticleEdit() {
     const history = useHistory();
     const { articleId } = useParams();
     const [title, setTitle] = useState('');
@@ -29,7 +29,9 @@ function ArticleEdit(props) {
     }, [articleId]);
 
     const handleSave = async () => {
-        const payload = { title, content, regions, authorId };
+        const articleAuthor = authorId === 0 ? null : authorId;
+        const payload = { title, content, regions, authorId: articleAuthor };
+        console.log(payload, "edit");
         await editArticle(articleId, payload);
         history.push(ROUTE_ARTICLE_LIST);
     };
